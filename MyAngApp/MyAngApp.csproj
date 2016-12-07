@@ -117,6 +117,7 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="readme.txt" />
     <Content Include="scripts\angular-chart.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls.min.js" />
