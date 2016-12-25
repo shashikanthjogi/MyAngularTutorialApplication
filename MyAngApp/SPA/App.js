@@ -1,6 +1,7 @@
-﻿var Apps = angular.module('App', ['ngRoute', 'ui.bootstrap']);
+﻿var Apps = angular.module('App', ['ngRoute', 'ui.bootstrap','chart.js']);
 Apps.controller('MainController', MainController);
 Apps.controller('GridController', GridController);
+Apps.controller('ViewProductController', ViewProductController);
 
 var configFunction = function ($routeProvider, $httpProvider) {
     $routeProvider
