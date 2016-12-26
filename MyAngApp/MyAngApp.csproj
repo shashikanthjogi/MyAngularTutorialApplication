@@ -105,9 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +124,7 @@
     <Content Include="scripts\angular-chart.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls.min.js" />
+    <Content Include="SPA\ApiService.js" />
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Controller\GridController.js" />
     <Content Include="SPA\Controller\MainController.js" />
@@ -139,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

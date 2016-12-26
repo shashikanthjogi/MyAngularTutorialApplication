@@ -24,15 +24,15 @@
         }
     }
 
-    GetData();
+    //GetData();
     $scope.pageChanged = function () {
         GetData();
     }
 
-    $scope.$watch('selectedLocation', function () {
-        $scope.data.lowstockdata.currentPage = 1;
-        GetData();
-    });
+    //$scope.$watch('selectedLocation', function () {
+    //    $scope.data.lowstockdata.currentPage = 1;
+    //    GetData();
+    //});
 
     $scope.openProduct = function (product) {
         var modalInstance = $uibModal.open({
