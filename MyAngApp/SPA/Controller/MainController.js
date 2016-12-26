@@ -1,16 +1,28 @@
-﻿var MainController = function ($scope) {
+﻿var MainController = function ($scope, Api) {
     $scope.models = {
-        locations: [
-            { id: "1", Location: "Bangalore" },
-            { id: "2", Location: "Chennai" },
-            { id: "3", Location: "Mumbai" }
-        ]
+        
     };
 
-    $scope.selectedLocation = $scope.models.locations[0];
+    $scope.selectedLocation = null;
 
     $scope.changeLocation = function (loc) {
         $scope.selectedLocation = loc;
     }
+
+    function GetLocations()
+    {
+        Api.GetApiCall("Locations", "GetLocations", function (event) {
+            if (event.hasErrors == true) {
+                alert('Error getting locations' + event.error);
+            }
+            else {
+                $scope.models.locations = event.result;
+                if ($scope.models.locations.data.length > 0) {
+                    $scope.selectedLocation = $scope.models.locations.data[0];
+                }
+            }
+        });
+    }
+    GetLocations();
 }
-MainController.$inject = ['$scope'];
+MainController.$inject = ['$scope','Api'];

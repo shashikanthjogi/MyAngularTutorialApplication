@@ -1,4 +1,5 @@
-﻿var Apps = angular.module('App', ['ngRoute', 'ui.bootstrap','chart.js']);
+﻿var Apps = angular.module('App', ['ngRoute', 'ui.bootstrap', 'chart.js']);
+Apps.service('Api',['$http',ApiService]);
 Apps.controller('MainController', MainController);
 Apps.controller('GridController', GridController);
 Apps.controller('ViewProductController', ViewProductController);
