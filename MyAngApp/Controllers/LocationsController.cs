@@ -13,6 +13,7 @@ namespace MyAngApp.Controllers
         [ActionName("GetLocations")]
         public IEnumerable<Models.Location> GetLocations()
         {
+            System.Threading.Thread.Sleep(5000);
             List<Models.Location> locations = new List<Models.Location>();
             locations.Add(new Models.Location()
             {

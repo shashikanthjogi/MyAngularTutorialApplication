@@ -106,10 +106,13 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\StockQueryController.cs" />
+    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\StockLevelItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,10 +122,12 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\chart.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\angular-chart.js" />
     <Content Include="scripts\angular-chart.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\loadingoverlay.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls.min.js" />
     <Content Include="SPA\ApiService.js" />
     <Content Include="SPA\App.js" />

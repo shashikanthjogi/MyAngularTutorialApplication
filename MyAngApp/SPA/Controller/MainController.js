@@ -11,9 +11,11 @@
 
     function GetLocations()
     {
+        SetBusy($("#LocationSelector"));
         Api.GetApiCall("Locations", "GetLocations", function (event) {
-            if (event.hasErrors == true) {
-                alert('Error getting locations' + event.error);
+            SetBusy($("#LocationSelector"),true);
+            if (event.hasError == true) {
+                $scope.setError(event.error.data);
             }
             else {
                 $scope.models.locations = event.result;
