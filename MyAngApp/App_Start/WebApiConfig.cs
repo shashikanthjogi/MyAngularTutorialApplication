@@ -14,6 +14,8 @@ namespace MyAngApp
                 routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new ExceptionHandler());
         }
     }
 }

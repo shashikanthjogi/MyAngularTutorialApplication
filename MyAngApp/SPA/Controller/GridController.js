@@ -1,7 +1,7 @@
-﻿var GridController = function ($scope, $uibModal) {
+﻿var GridController = function ($scope, $uibModal, Api) {
     $scope.data = {
         lowstockdata: {
-            totalitems: 726,
+            totalitems: 0,
             currentPage: 1,
             itemsperpage: 10,
             data: []
@@ -9,30 +9,37 @@
     };
 
     function GetData() {
-        $scope.data.lowstockdata.data = [];
-        for (i = 0; i < $scope.data.lowstockdata.itemsperpage; i++) {
-            var currLoation = $scope.selectedLocation.Location;
-            var rndnum = ($scope.data.lowstockdata.currentPage * 10) + i;
-            $scope.data.lowstockdata.data.push({
-                SKU: "SKU" + rndnum,
-                ProductTitle: "ProductTitle" + rndnum,
-                OnOrder: rndnum * 2,
-                Due: rndnum - 1,
-                StockLevel: rndnum,
-                Location: currLoation
+        if ($scope.selectedLocation != null) {
+            $scope.data.lowstockdata.data = [];
+
+            var request = {
+                LocationId: $scope.selectedLocation.LocationID,
+                PageNumber: $scope.data.lowstockdata.currentPage,
+                EntriesPerPage: $scope.data.lowstockdata.itemsperpage
+            };
+            SetBusy($("#LowStockGrid"));
+            Api.PostApiCall("StockQuery", "GetStockLevel", request, function (event) {
+                SetBusy($("#LowStockGrid"), true);
+                if (event.hasError == true) {
+                    alert("Error getting data" + event.error);
+                }
+                else {
+                    $scope.data.lowstockdata.data = event.result.data.rows;
+                    $scope.data.lowstockdata.totalitems = event.result.data.TotalItems;
+                }
             });
         }
+
     }
 
-    //GetData();
     $scope.pageChanged = function () {
         GetData();
     }
 
-    //$scope.$watch('selectedLocation', function () {
-    //    $scope.data.lowstockdata.currentPage = 1;
-    //    GetData();
-    //});
+    $scope.$watch('selectedLocation', function () {
+        $scope.data.lowstockdata.currentPage = 1;
+        GetData();
+    });
 
     $scope.openProduct = function (product) {
         var modalInstance = $uibModal.open({
@@ -53,4 +60,4 @@
 }
 
 
-GridController.$inject = ['$scope', '$uibModal'];
+GridController.$inject = ['$scope', '$uibModal','Api'];

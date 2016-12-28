@@ -12,25 +12,24 @@
                 var event = {
                     result: "",
                     hasError: true,
-                    error: status
+                    error: data
                 };
                 callback(event);
             }
             );
     }
     this.PostApiCall = function (controllerName, methodName, obj, callback) {
-        result = $http.post('api/' + controllerName + '/' + methodName, obj).success(function (data, status) {
+        result = $http.post('api/' + controllerName + '/' + methodName, obj).then(function (data, status) {
             var event = {
                 result: data,
                 hasError: false
             };
             callback(event);
-        }).error(
-            function (data, status) {
+        },function (data, status) {
                 var event = {
                     result: "",
                     hasError: true,
-                    error: status
+                    error: data
                 };
                 callback(event);
             }
